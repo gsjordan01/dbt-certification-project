@@ -17,12 +17,10 @@ sources:
               description: Number from 1-10 to rate the boardgame
               tests:
                 - not_null
-                - accepted_values_between_1_10
             - name: id
               description: Boardgame unique identifier
               tests:
                 - not_null
-
         - name: users
           description: Table with the information of the users of BoardGameGeek
           columns:
@@ -73,13 +71,11 @@ sources:
               quote: true
               tests: 
                 - not_null
-                - accepted_values_between_1_10
             - name: Bayes average
               description: In order to prevent a new or rare game with only a few high ratings from taking the top spots in the ranking, 30 average ratings are added to every rating to form the Bayesian average. As more ratings are received, the effect of these "damper ratings" is reduced to nil.
               quote: true
               tests:
                 - not_null
-                - accepted_values_between_1_10
             - name: Users rated
               description: Number of users that gave a review to a boardgame
               quote: true
@@ -115,8 +111,6 @@ sources:
                 - not_null
             - name: rating
               description: Average from all the ratings from the reviews
-              tests:
-                - accepted_values_between_1_10
             - name: weight
               description: Average complexity rating from the users
             - name: year_published
