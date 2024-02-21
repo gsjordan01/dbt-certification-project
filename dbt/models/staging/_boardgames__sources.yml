@@ -1,0 +1,196 @@
+version: 2
+
+sources:
+    - name: boardgame
+      description: This database contains data about boardgames
+      database: boardgame
+      schema: raw
+      tables:
+        - name: reviews
+          description: Table that contains the reviews that have been submited for users in the range from 1-10
+          columns:
+            - name: user
+              description: Username registered on boardgamegeek website 
+              tests:
+                - not_null
+            - name: rating
+              description: Number from 1-10 to rate the boardgame
+              tests:
+                - not_null
+            - name: id
+              description: Boardgame unique identifier
+              tests:
+                - not_null
+
+        - name: users
+          description: Table with the information of the users of BoardGameGeek
+          columns:
+            - name: users
+              description: Username registered on boardgamegeek website
+              tests:
+                - not_null
+                - unique
+            - name: url
+              description: Url from that user
+              tests:
+                - not_null
+                - unique
+            - name: country
+              description: Country where the user was born
+        
+        - name: rankings
+          description: Table that contains the rankings of different boardgames
+          columns:
+            - name: id
+              description: Boardgame unique identifier
+
+              tests:
+                - not_null
+                - unique
+            - name: Name
+              description: Name of the Boardgame
+              quote: true
+              tests:
+                - not_null
+            - name: Year
+              description: Year the boardgame was published
+              quote: true
+              tests:
+                - not_null
+            - name: Rank
+              description: Number representing the ranking of the boardgame (lower the better)
+              quote: true
+              tests:
+                - not_null
+                - unique
+            - name: Average
+              description: Average from all the ratings from the reviews
+              quote: true
+              tests: 
+                - not_null
+            - name: Bayes average
+              description: In order to prevent a new or rare game with only a few high ratings from taking the top spots in the ranking, 30 average ratings are added to every rating to form the Bayesian average. As more ratings are received, the effect of these "damper ratings" is reduced to nil.
+              quote: true
+              tests:
+                - not_null
+            - name: Users rated
+              description: Number of users that gave a review to a boardgame
+              quote: true
+              tests:
+                - not_null
+            - name: url
+              description: Boardgame url on boardgamegeek website
+              tests:
+                - not_null
+            - name: Thumbnail
+              description: Thumbnail image of the boardgame
+              quote: true
+            - name: updated_at
+              description: Date on timestamp format
+              quote: true
+              tests:
+                - not_null
+        - name: boardgames
+          description: Table that contains information related to the boardgames
+          columns:
+            - name: game_id
+              description: Boardgame unique identifier
+              tests:
+                - not_null
+                - unique
+            - name: name
+              description: Name of the Boardgame
+              tests:
+                - not_null
+            - name: type
+              description: Type of game (ex. boardgame)
+              tests:
+                - not_null
+            - name: rating
+              description: Average from all the ratings from the reviews
+            - name: weight
+              description: Average complexity rating from the users
+            - name: year_published
+              description: Year the boardgame was published
+              tests:
+                - not_null
+            - name: min_players
+              description: Minimum number of players supported by the boardgame
+              tests:
+                - not_null
+            - name: max_players
+              description: Maximum number of players supported by the boardgame
+              tests:
+                - not_null
+            - name: min_play_time
+              description: Minimum playtime estimated to play the boardgame (minutes)
+              tests:
+                - not_null
+            - name: max_play_time
+              description: Maximum playtime estimated to play the boardgame (minutes)
+              tests:
+                - not_null
+            - name: min_age
+              description: Minimum age recommended to play the boardgame
+              tests:
+                - not_null
+            - name: owned_by
+              description: Number of people that own the boardgame
+              tests:
+                - not_null
+        - name: artists
+          description: Table that contains information about the artists that work on some boardgame
+          columns:
+            - name: artists
+              description: Name of the artists responsible for the art and graphical design of the boardgame
+              tests:
+                    - not_null
+            - name: game_id
+              description: Boardgame unique identifier
+              tests:
+                    - not_null
+        - name: categories
+          description: Table that contains information about the categorie a boardgame fell in
+          columns:
+            - name: categories
+              description: Name of the categories that each boardgame belongs
+              tests:
+                - not_null
+            - name: game_id
+              description: Boardgame unique identifier
+              tests:
+                - not_null
+        - name: designers
+          description: Table that contains information about the designer that work on some boardgame
+          columns:
+            - name: designers
+              description: Name of the designers responsible for the mechanics and concept implementation of the boardgame
+              tests:
+                - not_null
+            - name: game_id
+              description: Boardgame unique identifier
+              tests:
+                - not_null
+        - name: mechanics
+          description: Table that contains information about the mechanics of a boardgame
+          columns:
+            - name: mechanics
+              description: Name of the mechanics that each boardgame delivers
+              tests:
+                - not_null
+            - name: game_id
+              description: Boardgame unique identifier
+              tests:
+                - not_null
+        - name: publishers
+          description: Table that contains information about the publisher of a boardgame
+          columns:
+            - name: publishers
+              description: Name of the publishers that support the distribution of the boardgames
+              tests:
+                - not_null
+            - name: game_id
+              description: Boardgame unique identifier
+              tests:
+                - not_null
+
