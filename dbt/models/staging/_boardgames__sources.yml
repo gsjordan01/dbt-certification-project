@@ -109,6 +109,9 @@ sources:
               description: Type of game (ex. boardgame)
               tests:
                 - not_null
+                - accepted_values:
+                    name: accepted_boardgames_types
+                    values: [bgsleeve, boardgame, boardgameaccessory, boardgameexpansion, boardgameissue, puzzle, rpgissue, rpgitem, videogame, videogamecompilation, videogameexpansion, videogamehardware]
             - name: rating
               description: Average from all the ratings from the reviews
             - name: weight
