@@ -14,7 +14,12 @@ final as (
     "Year" as boardgame_year_published,
     "Rank" as boardgame_rank,
     "Average" as boardgame_avg_rating,
-    "Bayes average" as boardgame_avg_bayes_rating,
+    round(
+      case
+        when "Bayes average" < 1 then 1
+        else "Bayes average"
+      end, 2
+    ) as boardgame_avg_bayes_rating,
     "Users rated" as boardgame_total_reviews,
     CONCAT('https://boardgamegeek.com', url) as boardgame_url,
     "Thumbnail" as boardgame_thumbnail,
