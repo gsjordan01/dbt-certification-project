@@ -35,6 +35,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  dbt_capstone_project:
+  dbt_certification_project:
     staging:
       +materialized: view
+
+seeds:
+  dbt_certification_project:
+    +schema: seeds
+    +column_types:
+      country_name: varchar(100)
+      country_code: varchar(3)
