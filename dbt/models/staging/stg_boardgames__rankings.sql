@@ -16,7 +16,7 @@ final as (
     "Average" as boardgame_avg_rating,
     round(
       case
-        when "Bayes average" < 1 then 1
+        when "Bayes average" < 1 then {{ var('min_accepted_num') }}
         else "Bayes average"
       end, 2
     ) as boardgame_avg_bayes_rating,
