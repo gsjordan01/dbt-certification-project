@@ -41,8 +41,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_certification_project:
     staging:
+      +tags: 
+        - staging
+        - static
       +materialized: view
     intermediate:
+      +tags:
+        - intermediate
       +materialized: ephemeral
 
 seeds:
@@ -51,3 +56,5 @@ seeds:
     +column_types:
       country_name: varchar(100)
       country_code: varchar(3)
+    +tags:
+      - seed

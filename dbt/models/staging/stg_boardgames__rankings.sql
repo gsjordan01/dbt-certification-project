@@ -1,3 +1,9 @@
+{{
+  config(
+    tags = "daily"
+    )
+}}
+
 with
 
 rankings as (

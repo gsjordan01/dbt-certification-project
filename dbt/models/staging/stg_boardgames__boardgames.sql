@@ -13,7 +13,7 @@ final as (
     name as boardgame_name,
     
     case
-      when type = 'boardgame' then {{ var('boardgame_type') }}
+      when type = 'boardgame' then '{{ var("boardgame_type") }}'
       else 'not boardgame'
     end as boardgame_type,
     
