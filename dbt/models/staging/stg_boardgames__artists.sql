@@ -13,7 +13,7 @@ final as (
     case
       when artists = '0' then '{{ var("unknown") }}'
       else artists
-    end
+    end as artist_name
 
   from artists
 

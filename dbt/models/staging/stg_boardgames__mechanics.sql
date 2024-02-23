@@ -13,7 +13,7 @@ final as (
     case
       when mechanics = '0' then '{{ var("unknown") }}'
       else mechanics
-    end as designer_name
+    end as mechanic_name
   
   from mechanics
 

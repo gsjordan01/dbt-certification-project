@@ -15,7 +15,7 @@ rankings as (
 final as (
 
   select
-    id as ranking_id,
+    id as boardgame_id,
     "Name" as boardgame_name,
     "Year" as boardgame_year_published,
     "Rank" as boardgame_rank,

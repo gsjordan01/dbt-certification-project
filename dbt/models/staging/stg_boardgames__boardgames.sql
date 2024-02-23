@@ -48,12 +48,12 @@ final as (
     case
       when min_play_time = 0 then {{ var('min_accepted_num') }}
       else min_play_time
-    end as boardgame_min_play_time,
+    end as boardgame_min_play_time_in_mins,
 
     case
       when max_play_time = 0 then {{ var('min_accepted_num') }}
       else max_play_time
-    end as boardgame_max_play_time,
+    end as boardgame_max_play_time_in_mins,
 
     case
       when min_age = 0 then {{ var('min_accepted_num') }}

@@ -13,7 +13,7 @@ final as (
     case
       when publishers = '0' then '{{ var("unknown") }}'
       else publishers
-    end as designer_name
+    end as publisher_name
   
   from publishers
 
