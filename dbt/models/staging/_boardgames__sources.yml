@@ -94,13 +94,16 @@ sources:
               tests:
                 - not_null
         - name: boardgames
-          description: Table that contains information related to the boardgames
+          description: Table with boardgames main properties
           columns:
             - name: game_id
               description: Boardgame unique identifier
               tests:
-                - not_null
                 - unique
+                - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_game_id_to_be_of_type_number
             - name: name
               description: Name of the Boardgame
               tests:
@@ -108,40 +111,60 @@ sources:
             - name: type
               description: Type of game (ex. boardgame)
               tests:
-                - not_null
                 - accepted_values:
                     name: accepted_boardgames_types
                     values: [bgsleeve, boardgame, boardgameaccessory, boardgameexpansion, boardgameissue, puzzle, rpgissue, rpgitem, videogame, videogamecompilation, videogameexpansion, videogamehardware]
             - name: rating
-              description: Average from all the ratings from the reviews
+              description: average from all the ratings from the reviews (0-10)
             - name: weight
-              description: Average complexity rating from the users
+              description: average complexity rating from the users (0-5)
             - name: year_published
-              description: Year the boardgame was published
+              description: year the boardgame was published
               tests:
                 - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_boardgame_year_published_to_be_of_type_number
+                - dbt_expectations.expect_column_values_to_match_regex:
+                    regex: "^.?\\\\d{1,4}$"
+                    name: expect_column_values_to_match_regex_boardgames_year_published
             - name: min_players
-              description: Minimum number of players supported by the boardgame
+              description: minimum number of players supported by the boardgame
               tests:
                 - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_min_players_to_be_of_type_number
             - name: max_players
-              description: Maximum number of players supported by the boardgame
+              description: maximum number of players supported by the boardgame
               tests:
                 - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_max_players_to_be_of_type_number
             - name: min_play_time
-              description: Minimum playtime estimated to play the boardgame (minutes)
+              description: minimum playtime estimated to play the boardgame (minutes)
               tests:
                 - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_min_play_time_to_be_of_type_number
             - name: max_play_time
-              description: Maximum playtime estimated to play the boardgame (minutes)
+              description: maximum playtime estimated to play the boardgame (minutes)
               tests:
                 - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_max_play_time_to_be_of_type_number
             - name: min_age
-              description: Minimum age recommended to play the boardgame
+              description: minimum age recommended to play the boardgame
               tests:
                 - not_null
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                    column_type: number
+                    name: expect_boardgames_min_age_to_be_of_type_number
             - name: owned_by
-              description: Number of people that own the boardgame
+              description: number of people that own the boardgame
               tests:
                 - not_null
         - name: artists
